@@ -1,16 +1,33 @@
-class fngseq():
+############################################################
+from typing import TypeVar, Generic
+from collections.abc import Callable
+############################################################
 
-    def nilq(xs):
-        return forall(xs, lambda _: False)
+#alias
+nint = int
+#alias
+sint = int
 
-    def foritm(xs, work):
+############################################################
+
+XS = TypeVar('XS')
+X0 = TypeVar('X0')
+
+class fngseq(Generic[XS,X0]):
+
+    def nilq(self, xs: XS) -> bool:
+        return self.forall(xs, lambda _: False)
+
+    def foritm(self, xs: XS, work: Callable[[X0], None]) -> None:
         raise NotImplementedError
-    def iforitm(xs, work):
+    def iforitm(self, xs: XS, work: Callable[[nint, X0], None]) -> None:
         raise NotImplementedError
 
-    def forall(xs, test):
+    def forall(self, xs: XS, test: Callable[[X0], bool]) -> bool:
         raise NotImplementedError
-    def iforall(xs, test):
+    def iforall(self, xs: XS, test: Callable[[nint, X0], bool]) -> bool:
         raise NotImplementedError
 
-# end of [class class fngseq():...]
+# end of [class class fngseq(Generic[XS,X0]):...]
+
+############################################################
